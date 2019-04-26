@@ -18,7 +18,7 @@ gulp.task('styles', ()=>{
     //console.log('css touched...');
     return gulp.src('./app/assets/styles/styles.css')
         .pipe(postcss([cssimport, cssvars, nested, autoprefixer]))
-        .pipe(gulp.dest('./app/temp/styles'));
+        .pipe(gulp.dest('./app/temp/styles/'));
 });
 
 gulp.task('watch', ()=> {
@@ -27,7 +27,7 @@ gulp.task('watch', ()=> {
         gulp.start('html');
     });
 
-    watch('./app/assets/**/*.css', () => {
+    watch('./app/assets/**/*.scss', () => {
         gulp.start('styles');
     });
 });
