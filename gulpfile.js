@@ -27,7 +27,7 @@ gulp.task('watch', ()=> {
         gulp.start('html');
     });
 
-    watch('./app/assets/**/*.scss', () => {
+    watch(['./app/assets/**/*.scss', './app/assets/**/*.css'], () => {
         gulp.start('styles');
     });
 });
