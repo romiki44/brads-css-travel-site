@@ -18,6 +18,10 @@ gulp.task('watch', ()=> {
     watch(['./app/assets/**/*.scss', './app/assets/**/*.css'], () => {
         gulp.start('cssInject');
     });
+
+    watch('./app/assets/scripts/**/*.js', function() {
+        gulp.start('scriptsRefresh');
+    });
 });
 
 gulp.task('cssInject', ['styles'], function() {
@@ -28,4 +32,8 @@ gulp.task('cssInject', ['styles'], function() {
 //priklad
 gulp.task('default', ()=> {
     console.log('Welcome Gulp');
+});
+
+gulp.task('scriptsRefresh', ['scripts'], function() {
+    browserSync.reload();
 });
