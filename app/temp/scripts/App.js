@@ -46,56 +46,71 @@
 
 	'use strict';
 
+	var _MobileMenu = __webpack_require__(1);
+
+	var _MobileMenu2 = _interopRequireDefault(_MobileMenu);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var mobileMenu = new _MobileMenu2.default();
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _jquery = __webpack_require__(1);
+	var _jquery = __webpack_require__(2);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
-
-	var _Person2 = __webpack_require__(2);
-
-	var _Person3 = _interopRequireDefault(_Person2);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	var MobileMenu = function () {
+	    function MobileMenu() {
+	        _classCallCheck(this, MobileMenu);
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //const $=require('jquery');
-	//const Person=require('./modules/Person');
+	        // old way, spagetti-code!
+	        /*$(".site-header__menu-icon").click(function() {
+	            console.log("Menu icon was clicked...");
+	        });*/
 
-
-	console.log('Webpack automation test???????????');
-
-	var Adult = function (_Person) {
-	    _inherits(Adult, _Person);
-
-	    function Adult() {
-	        _classCallCheck(this, Adult);
-
-	        return _possibleConstructorReturn(this, (Adult.__proto__ || Object.getPrototypeOf(Adult)).apply(this, arguments));
+	        this.siteHeader = (0, _jquery2.default)(".site-header");
+	        this.menuIcon = (0, _jquery2.default)(".site-header__menu-icon");
+	        this.menuContent = (0, _jquery2.default)(".site-header__menu-content");
+	        this.events();
 	    }
 
-	    _createClass(Adult, [{
-	        key: 'payTaxes',
-	        value: function payTaxes() {
-	            console.log(this.name + ' pay taxes!');
+	    _createClass(MobileMenu, [{
+	        key: "events",
+	        value: function events() {
+	            this.menuIcon.click(this.toggleTheMenu.bind(this));
+	        }
+	    }, {
+	        key: "toggleTheMenu",
+	        value: function toggleTheMenu() {
+	            //console.log("Menu icon clicked - menu toggled");
+	            this.menuContent.toggleClass("site-header__menu-content--is-visible");
+	            this.siteHeader.toggleClass("site-header--is-expanded");
+	            this.menuIcon.toggleClass("site-header__menu-icon--close-x");
 	        }
 	    }]);
 
-	    return Adult;
-	}(_Person3.default);
+	    return MobileMenu;
+	}();
 
-	var john = new _Person3.default("John Doe", "blue");
-	john.greet();
-
-	var mary = new Adult("Mary Smith", "yellow");
-	mary.greet();
-	mary.payTaxes();
+	exports.default = MobileMenu;
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10687,51 +10702,6 @@
 	return jQuery;
 	} );
 
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	/*function Person(fullName, favColor) {
-	    this.name=fullName;
-	    this.favoriteColor=favColor;
-	    this.greet =function() {
-	        console.log("Hello, my name is " + this.name + " and my favorite color is " + this.favColor + ".");
-	    };
-	}*/
-
-	var Person = function () {
-	    function Person(fullName, favColor) {
-	        _classCallCheck(this, Person);
-
-	        this.name = fullName;
-	        this.favoriteColor = favColor;
-	    }
-
-	    _createClass(Person, [{
-	        key: "greet",
-	        value: function greet() {
-	            console.log("Hi, hi  there, my name is " + this.name + " and my favorite color is " + this.favoriteColor + ".");
-	        }
-	    }]);
-
-	    return Person;
-	}();
-
-	//module.exports=Person;
-
-
-	exports.default = Person;
 
 /***/ })
 /******/ ]);
