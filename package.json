@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "jquery": "^3.4.0",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "waypoints": "^4.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^9.5.1",
